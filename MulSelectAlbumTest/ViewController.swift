@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func click(sender: AnyObject) {
+        var controller = AlbumTableViewController(nibName:"AlbumTableViewController",bundle:nil)
+        controller.getImagesArray { (imageArray) -> Void in
+            println("first:\(imageArray)")
+            self.imageView.image = imageArray[0] as UIImage
+        }
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 
 }
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="gTV-IL-0wX" customClass="PhotoCollectionViewCell" customModule="MulSelectAlbumTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vij-2B-Zum">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    </imageView>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Checked-Active.png" translatesAutoresizingMaskIntoConstraints="NO" id="aUI-vA-TuX">
+                        <rect key="frame" x="30" y="0.0" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="0qI-V6-hMD"/>
+                            <constraint firstAttribute="height" constant="20" id="sPF-6k-hg2"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="vij-2B-Zum" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3Tx-q7-acy"/>
+                <constraint firstAttribute="trailing" secondItem="aUI-vA-TuX" secondAttribute="trailing" id="AmI-sx-TcL"/>
+                <constraint firstItem="aUI-vA-TuX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Q5u-Sh-5Tf"/>
+                <constraint firstAttribute="trailing" secondItem="vij-2B-Zum" secondAttribute="trailing" id="ZS6-n9-DJU"/>
+                <constraint firstAttribute="bottom" secondItem="vij-2B-Zum" secondAttribute="bottom" id="iXp-l4-d3J"/>
+                <constraint firstItem="vij-2B-Zum" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ltn-AA-fGP"/>
+            </constraints>
+            <connections>
+                <outlet property="photoImage" destination="vij-2B-Zum" id="75v-gY-vvs"/>
+                <outlet property="selectImage" destination="aUI-vA-TuX" id="Wwy-3b-vYM"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Checked-Active.png" width="40" height="40"/>
+    </resources>
+</document>
