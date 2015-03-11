@@ -27,6 +27,7 @@ class AlbumTableViewController: UIViewController {
         assetsLibrary = ALAssetsLibrary()
         
         tableView.registerNib(UINib(nibName: "AlbumTableViewCell", bundle: nil), forCellReuseIdentifier: AlbumTableViewCell.cellID)
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -94,6 +95,7 @@ extension AlbumTableViewController : UITableViewDelegate{
         
         photoCollectionViewController.getImagesArray { (imageArray) -> Void in
             println("second:\(imageArray)")
+            self.navigationController?.navigationBarHidden = true
             self.navigationController?.popViewControllerAnimated(false )
             self.getImageArrayCallBack(imageArray: imageArray)
         }
