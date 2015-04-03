@@ -17,9 +17,18 @@ class PhotoCollectionViewController: UIViewController {
     
     private var getImageArrayCallBack : ((imageArray:[UIImage])->Void)!
     
-    let MAX_SELECT_COUNT = 5
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var MAX_SELECT_COUNT : Int!
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?,maxCount : Int = 5) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.MAX_SELECT_COUNT = maxCount
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     
     override func viewDidLoad() {

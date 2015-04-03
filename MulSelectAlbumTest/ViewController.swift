@@ -23,6 +23,7 @@ class ViewController: UIViewController {
 
     @IBAction func click(sender: AnyObject) {
         var controller = AlbumTableViewController(nibName:"AlbumTableViewController",bundle:nil)
+        controller.maxCount = 3
         controller.getImagesArray { (imageArray) -> Void in
             println("first:\(imageArray)")
             self.imageView.image = imageArray[0] as UIImage

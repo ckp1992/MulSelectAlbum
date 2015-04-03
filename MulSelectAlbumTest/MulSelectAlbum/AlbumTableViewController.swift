@@ -16,6 +16,16 @@ class AlbumTableViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private var getImageArrayCallBack : ((imageArray:[UIImage])->Void)!
+    var maxCount : Int!
+    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?,maxCount : Int = 5) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        println("maxCount:\(maxCount)")
+        self.maxCount = maxCount
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +100,7 @@ extension AlbumTableViewController : UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        var photoCollectionViewController = PhotoCollectionViewController(nibName: "PhotoCollectionViewController", bundle: nil)
+        var photoCollectionViewController = PhotoCollectionViewController(nibName: "PhotoCollectionViewController", bundle: nil,maxCount:self.maxCount)
         photoCollectionViewController.assetsGroup = self.assetsGroups.objectAtIndex(indexPath.row) as ALAssetsGroup
         
         photoCollectionViewController.getImagesArray { (imageArray) -> Void in
