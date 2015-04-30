@@ -87,8 +87,8 @@ extension AlbumTableViewController : UITableViewDataSource{
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var cell = tableView.dequeueReusableCellWithIdentifier(AlbumTableViewCell.cellID) as AlbumTableViewCell
-        cell.initData(self.assetsGroups.objectAtIndex(indexPath.row) as ALAssetsGroup)
+        var cell = tableView.dequeueReusableCellWithIdentifier(AlbumTableViewCell.cellID) as! AlbumTableViewCell
+        cell.initData(self.assetsGroups.objectAtIndex(indexPath.row) as! ALAssetsGroup)
         return cell
     }
 }
@@ -101,7 +101,7 @@ extension AlbumTableViewController : UITableViewDelegate{
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         var photoCollectionViewController = PhotoCollectionViewController(nibName: "PhotoCollectionViewController", bundle: nil,maxCount:self.maxCount)
-        photoCollectionViewController.assetsGroup = self.assetsGroups.objectAtIndex(indexPath.row) as ALAssetsGroup
+        photoCollectionViewController.assetsGroup = self.assetsGroups.objectAtIndex(indexPath.row) as! ALAssetsGroup
         
         photoCollectionViewController.getImagesArray { (imageArray) -> Void in
             println("second:\(imageArray)")

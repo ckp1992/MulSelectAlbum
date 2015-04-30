@@ -41,7 +41,7 @@ class PhotoCollectionViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
             collectionView.allowsMultipleSelection = true
-        var categoryFlowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
+        var categoryFlowLayout: UICollectionViewFlowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         var width = CGFloat( UIScreen.mainScreen().bounds.width - 2 * 5 ) / 4
         var height = width
         categoryFlowLayout.itemSize = CGSizeMake( width,height)
@@ -77,8 +77,8 @@ extension PhotoCollectionViewController{
         //返回高清大图
         var imageArray = [UIImage]()
         for indexItem in collectionView.indexPathsForSelectedItems() {
-            var indexPath = indexItem as NSIndexPath
-            var resultAsset : ALAsset = self.assets.objectAtIndex(indexPath.row) as ALAsset
+            var indexPath = indexItem as! NSIndexPath
+            var resultAsset : ALAsset = self.assets.objectAtIndex(indexPath.row) as! ALAsset
             var representation : ALAssetRepresentation = resultAsset.defaultRepresentation()
             var resultImageRef : CGImageRef = representation.fullResolutionImage().takeUnretainedValue()
             var resultImage : UIImage = UIImage(CGImage: resultImageRef)!
@@ -105,10 +105,10 @@ extension PhotoCollectionViewController : UICollectionViewDataSource{
     
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        var cell: PhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoCollectionViewCell.cellID, forIndexPath:indexPath) as PhotoCollectionViewCell
+        var cell: PhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoCollectionViewCell.cellID, forIndexPath:indexPath) as! PhotoCollectionViewCell
 
         for indexItem in collectionView.indexPathsForSelectedItems() {
-            var index = indexItem as NSIndexPath
+            var index = indexItem as! NSIndexPath
             if indexPath.row == index.row {
                 cell.selectState()
                 break
@@ -117,7 +117,7 @@ extension PhotoCollectionViewController : UICollectionViewDataSource{
             }
         }
 
-        cell.setData(self.assets.objectAtIndex(indexPath.row) as ALAsset)
+        cell.setData(self.assets.objectAtIndex(indexPath.row) as! ALAsset)
         return cell
     }
 }
@@ -128,12 +128,12 @@ extension PhotoCollectionViewController : UICollectionViewDelegate{
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as PhotoCollectionViewCell
+        var cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
         cell.selectState()
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        var cell = collectionView.cellForItemAtIndexPath(indexPath) as PhotoCollectionViewCell
+        var cell = collectionView.cellForItemAtIndexPath(indexPath) as! PhotoCollectionViewCell
         cell.deselectState()
     }
 }
